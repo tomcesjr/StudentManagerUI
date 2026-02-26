@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="edu.farmingdale.studentmanagerui.HelloController">
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="File"/>
+                <Menu text="Edit"/>
+                <Menu text="Theme"/>
+                <Menu text="Help"/>
+            </menus>
+        </MenuBar>
+    </top>
+
+    <left>
+        <VBox prefWidth="150">
+            <ImageView fitHeight="120" fitWidth="120"/>
+        </VBox>
+    </left>
+
+    <center>
+        <TableView>
+        <columns>
+            <TableColumn text="ID"/>
+            <TableColumn text="First Name"/>
+            <TableColumn text="Last Name"/>
+            <TableColumn text="Department"/>
+            <TableColumn text="Major"/>
+            <TableColumn text="Email"/>
+        </columns>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="10" prefWidth="200">
+            <TextField promptText="First Name"/>
+            <TextField promptText="Last Name"/>
+            <TextField promptText="Department"/>
+            <TextField promptText="Major"/>
+            <TextField promptText="Email"/>
+            <TextField promptText="imageURL"/>
+
+            <Button text="Clear"/>
+            <Button text="Add"/>
+            <Button text="Delete"/>
+            <Button text="Edit"/>
+        </VBox>
+    </right>
+
+    <bottom>
+        <Label text=" "/>
+    </bottom>
+
+</BorderPane>
+
+
