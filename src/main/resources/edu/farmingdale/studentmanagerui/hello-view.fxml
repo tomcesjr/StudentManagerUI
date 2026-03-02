@@ -3,59 +3,110 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.SVGPath?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Circle?>
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="edu.farmingdale.studentmanagerui.HelloController">
+
     <top>
-        <MenuBar>
+        <MenuBar fx:id="menuBar">
             <menus>
-                <Menu text="File"/>
-                <Menu text="Edit"/>
-                <Menu text="Theme"/>
-                <Menu text="Help"/>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="New"/>
+                        <MenuItem text="Open"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit"/>
+                    </items>
+                </Menu>
+                <Menu text="Edit">
+                    <items>
+                        <MenuItem text="Undo"/>
+                        <MenuItem text="Redo"/>
+                    </items>
+                </Menu>
+                <Menu text="Theme">
+                    <items>
+                        <MenuItem text="Light"/>
+                        <MenuItem text="Dark"/>
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About"/>
+                    </items>
+                </Menu>
             </menus>
         </MenuBar>
     </top>
 
-    <left>
-        <VBox prefWidth="150">
-            <ImageView fitHeight="120" fitWidth="120"/>
-        </VBox>
-    </left>
-
     <center>
-        <TableView>
-        <columns>
-            <TableColumn text="ID"/>
-            <TableColumn text="First Name"/>
-            <TableColumn text="Last Name"/>
-            <TableColumn text="Department"/>
-            <TableColumn text="Major"/>
-            <TableColumn text="Email"/>
-        </columns>
-        </TableView>
+        <HBox>
+
+          <VBox prefWidth="150" styleClass="left-pane" alignment="TOP_CENTER">
+              <padding>
+                  <Insets top="10" right="10" bottom="10" left="10"/>
+              </padding>
+
+              <StackPane prefWidth="130" prefHeight="130" styleClass="avatar-card">
+
+                  <StackPane>
+                      <Circle radius="44" styleClass="avatar-outer"/>
+
+                      <Circle radius="12" translateY="-12" styleClass="avatar-inner"/>
+
+                      <SVGPath content="M 0 22
+C -20 22 -30 10 -30 -2
+C -30 -18 -12 -28 0 -28
+C 12 -28 30 -18 30 -2
+C 30 10 20 22 0 22 Z"
+                               translateY="18"
+                               styleClass="avatar-inner"/>
+                  </StackPane>
+              </StackPane>
+          </VBox>
+
+            <StackPane HBox.hgrow="ALWAYS">
+                <TableView fx:id="table" styleClass="main-table">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="70"/>
+                        <TableColumn fx:id="colFirst" text="First Name" prefWidth="140"/>
+                        <TableColumn fx:id="colLast" text="Last Name" prefWidth="140"/>
+                        <TableColumn fx:id="colDept" text="Department" prefWidth="160"/>
+                        <TableColumn fx:id="colMajor" text="Major" prefWidth="130"/>
+                        <TableColumn fx:id="colEmail" text="Email" prefWidth="220"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="No content in table"/>
+                    </placeholder>
+                </TableView>
+            </StackPane>
+
+            <VBox prefWidth="260" styleClass="right-pane" spacing="10" alignment="TOP_CENTER">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+
+                <TextField fx:id="tfFirst" promptText="First Name"/>
+                <TextField fx:id="tfLast" promptText="Last Name"/>
+                <TextField fx:id="tfDept" promptText="Department"/>
+                <TextField fx:id="tfMajor" promptText="Major"/>
+                <TextField fx:id="tfEmail" promptText="Email"/>
+                <TextField fx:id="tfImageUrl" promptText="imageURL"/>
+
+                <Region minHeight="20"/>
+
+                <VBox spacing="18" fillWidth="true">
+                    <Button fx:id="btnClear" text="Clear" styleClass="action-button"/>
+                    <Button fx:id="btnAdd" text="Add" styleClass="action-button"/>
+                    <Button fx:id="btnDelete" text="Delete" styleClass="action-button"/>
+                    <Button fx:id="btnEdit" text="Edit" styleClass="action-button"/>
+                </VBox>
+            </VBox>
+        </HBox>
     </center>
-
-    <right>
-        <VBox spacing="10" prefWidth="200">
-            <TextField promptText="First Name"/>
-            <TextField promptText="Last Name"/>
-            <TextField promptText="Department"/>
-            <TextField promptText="Major"/>
-            <TextField promptText="Email"/>
-            <TextField promptText="imageURL"/>
-
-            <Button text="Clear"/>
-            <Button text="Add"/>
-            <Button text="Delete"/>
-            <Button text="Edit"/>
-        </VBox>
-    </right>
-
-    <bottom>
-        <Label text=" "/>
-    </bottom>
-
 </BorderPane>
 
 
